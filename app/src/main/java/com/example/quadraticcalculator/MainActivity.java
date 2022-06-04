@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -35,15 +36,34 @@ public class MainActivity extends AppCompatActivity {
     public void sendMessage(View view) {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
 
-        //retrieve values
+        //retrieve number values
         EditText editText_a = (EditText) findViewById(R.id.editTextNumberDecimal);
         EditText editText_b = (EditText) findViewById(R.id.editTextNumberDecimal2);
         EditText editText_c = (EditText) findViewById(R.id.editTextNumberDecimal3);
 
-        // convert values to Double
+        // convert number values to Double
         Double var_a = Double.parseDouble(editText_a.getText().toString());
         Double var_b = Double.parseDouble(editText_b.getText().toString());
         Double var_c = Double.parseDouble(editText_c.getText().toString());
+
+        // get switch values
+        Switch switch_a = (Switch) findViewById(R.id.switch1);
+        Switch switch_b = (Switch) findViewById(R.id.switch2);
+        Switch switch_c = (Switch) findViewById(R.id.switch3);
+
+        // apply switch values to doubles
+        if (switch_a.isChecked())
+        {
+            var_a = (0 - var_a);
+        }
+        if (switch_b.isChecked())
+        {
+            var_b = (0 - var_b);
+        }
+        if (switch_c.isChecked())
+        {
+            var_c = (0 - var_c);
+        }
 
 
         // calculate the message
@@ -69,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
             Double ans_2 = (((0.0 - var_b) - Math.sqrt(discriminant))/ (var_a * 2));
             message = "This function has two answers. \nA graph of this function intersects the x-axis twice. \nAnswer 1: " + (ans_1) + " \nAnswer 2: " + (ans_2);
         }
-
 
         // pass the message
         intent.putExtra(EXTRA_MESSAGE, message);
