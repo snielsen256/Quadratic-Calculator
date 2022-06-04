@@ -34,8 +34,30 @@ public class MainActivity extends AppCompatActivity {
     /** Called when the user taps the Send button */
     public void sendMessage(View view) {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editTextTextPersonName);
-        String message = editText.getText().toString();
+
+        EditText editText_a = (EditText) findViewById(R.id.editTextNumberDecimal);
+        EditText editText_b = (EditText) findViewById(R.id.editTextNumberDecimal2);
+        EditText editText_c = (EditText) findViewById(R.id.editTextNumberDecimal3);
+
+        Double var_a = Double.parseDouble(editText_a.getText().toString());
+        Double var_b = Double.parseDouble(editText_b.getText().toString());
+        Double var_c = Double.parseDouble(editText_c.getText().toString());
+
+        String message = ("" + (var_a) + " " + (var_b) + " " + (var_c));
+
+        // calculate the result
+            //String message = result
+
+
+
+        /*
+        TODO:
+            find right value for EXTRA_MESSAGE
+            find right value for editTextTextPersonName
+            Do the actual calculation, and put the result in "message"
+         */
+
+
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }

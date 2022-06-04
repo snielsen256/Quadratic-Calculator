@@ -11,4 +11,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
+    <string name="edit_a">A</string>
+    <string name="edit_b">B</string>
+    <string name="edit_c">C</string>
 </resources>
