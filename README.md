@@ -16,4 +16,4 @@ An android app that factors quadratic equations. The user inputs the values for 
 * [ConstraintLayout](https://developer.android.com/training/constraint-layout#groovy)
 * [Views - findviewbyid()](https://findanyanswer.com/what-is-the-use-of-findviewbyid-in-android)
 * [EditText to Double](https://stackoverflow.com/questions/35445936/converting-a-edit-text-to-a-double-android)
-* []()
+* [The role of the discriminant in the quadratic equation](https://www.intmath.com/blog/learn-math/understanding-the-discriminant-in-a-quadratic-formula-12554)

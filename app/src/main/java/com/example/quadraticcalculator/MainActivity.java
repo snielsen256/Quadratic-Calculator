@@ -35,29 +35,43 @@ public class MainActivity extends AppCompatActivity {
     public void sendMessage(View view) {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
 
+        //retrieve values
         EditText editText_a = (EditText) findViewById(R.id.editTextNumberDecimal);
         EditText editText_b = (EditText) findViewById(R.id.editTextNumberDecimal2);
         EditText editText_c = (EditText) findViewById(R.id.editTextNumberDecimal3);
 
+        // convert values to Double
         Double var_a = Double.parseDouble(editText_a.getText().toString());
         Double var_b = Double.parseDouble(editText_b.getText().toString());
         Double var_c = Double.parseDouble(editText_c.getText().toString());
 
-        String message = ("" + (var_a) + " " + (var_b) + " " + (var_c));
 
-        // calculate the result
-            //String message = result
+        // calculate the message
+            //default message
+        String message = ("Error: did not calculate. \nDetected input: a = " + (var_a) + ", b = " + (var_b) + ", c = " + (var_c));
+
+            //find the discriminant
+        Double discriminant = ((Math.pow(var_b, 2.0)) - (4.0 * var_a * var_c));
+
+            //give responses based on discriminant value
+        if (discriminant < 0.0) // has no real answers
+        {
+            message = "This function has no real answers. \nA graph of this function does not intersect the x-axis.";
+        }
+        else if (discriminant == 0.0) // has one real answer
+        {
+            Double answer = ((0.0 - var_b) / (var_a * 2));
+            message = "This function has one answer. \nA graph of this function intersects the x-axis exactly once. \nAnswer: " + (answer);
+        }
+        else // has two answers (discriminant > 0)
+        {
+            Double ans_1 = (((0.0 - var_b) + Math.sqrt(discriminant))/ (var_a * 2));
+            Double ans_2 = (((0.0 - var_b) - Math.sqrt(discriminant))/ (var_a * 2));
+            message = "This function has two answers. \nA graph of this function intersects the x-axis twice. \nAnswer 1: " + (ans_1) + " \nAnswer 2: " + (ans_2);
+        }
 
 
-
-        /*
-        TODO:
-            find right value for EXTRA_MESSAGE
-            find right value for editTextTextPersonName
-            Do the actual calculation, and put the result in "message"
-         */
-
-
+        // pass the message
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
